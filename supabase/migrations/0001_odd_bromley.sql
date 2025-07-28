@@ -1,0 +1,1 @@
+ALTER TABLE "studios" ALTER COLUMN "photos" SET DEFAULT '[{"url":"https://mnbsdhcuplkrmvfnxsze.supabase.co/storage/v1/object/public/photos//1753674779070-1","title":"Starlit Station","description":"A quiet rural platform bathed in starry night.","display_order":1}]'::jsonb;

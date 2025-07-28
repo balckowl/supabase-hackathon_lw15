@@ -1,0 +1,88 @@
+{
+  "id": "265f5b86-7ec2-4e77-9f3b-39733fedc420",
+  "prevId": "db459572-90ba-4f13-b060-1f723e8f64c0",
+  "version": "7",
+  "dialect": "postgresql",
+  "tables": {
+    "public.studios": {
+      "name": "studios",
+      "schema": "",
+      "columns": {
+        "id": {
+          "name": "id",
+          "type": "uuid",
+          "primaryKey": true,
+          "notNull": true,
+          "default": "gen_random_uuid()"
+        },
+        "owner_id": {
+          "name": "owner_id",
+          "type": "uuid",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "studio_name": {
+          "name": "studio_name",
+          "type": "text",
+          "primaryKey": false,
+          "notNull": true
+        },
+        "photos": {
+          "name": "photos",
+          "type": "jsonb",
+          "primaryKey": false,
+          "notNull": true,
+          "default": "'[{\"url\":\"https://mnbsdhcuplkrmvfnxsze.supabase.co/storage/v1/object/public/photos//1753674779070-1\",\"title\":\"Starlit Station\",\"description\":\"A quiet rural platform bathed in starry night.\",\"display_order\":1},{\"url\":\"https://mnbsdhcuplkrmvfnxsze.supabase.co/storage/v1/object/public/photos//1753675319978-1\",\"title\":\"Midnight Takeoff\",\"description\":\"Under a canopy of stars, an airplane ascends from the dimly lit runway into the night sky.\",\"display_order\":2}]'::jsonb"
+        },
+        "created_at": {
+          "name": "created_at",
+          "type": "timestamp with time zone",
+          "primaryKey": false,
+          "notNull": false,
+          "default": "now()"
+        }
+      },
+      "indexes": {},
+      "foreignKeys": {
+        "studios_owner_id_users_id_fk": {
+          "name": "studios_owner_id_users_id_fk",
+          "tableFrom": "studios",
+          "tableTo": "users",
+          "schemaTo": "auth",
+          "columnsFrom": [
+            "owner_id"
+          ],
+          "columnsTo": [
+            "id"
+          ],
+          "onDelete": "cascade",
+          "onUpdate": "no action"
+        }
+      },
+      "compositePrimaryKeys": {},
+      "uniqueConstraints": {
+        "studios_studio_name_unique": {
+          "name": "studios_studio_name_unique",
+          "nullsNotDistinct": false,
+          "columns": [
+            "studio_name"
+          ]
+        }
+      },
+      "policies": {},
+      "checkConstraints": {},
+      "isRLSEnabled": false
+    }
+  },
+  "enums": {},
+  "schemas": {},
+  "sequences": {},
+  "roles": {},
+  "policies": {},
+  "views": {},
+  "_meta": {
+    "columns": {},
+    "schemas": {},
+    "tables": {}
+  }
+}
